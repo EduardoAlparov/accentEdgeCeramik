@@ -1,0 +1,39 @@
+@import '../helpers/mixins.scss';
+
+.menu {
+  &__list {
+    display: flex;
+    align-items: center;
+    column-gap: 3rem;
+  }
+
+  &__link {
+    display: block;
+
+    color: var(--grey);
+    font: var(--font-text-req-14);
+    white-space: nowrap;
+
+    transition: color 0.3s ease-out;
+    cursor: pointer;
+
+    @include hover() {
+      color: var(--title);
+    }
+
+    &--dark {
+      color: var(--title);
+
+      @include hover() {
+        color: var(--accent);
+      }
+    }
+  }
+
+  &--panel {
+    .menu__list {
+      flex-flow: row wrap;
+      row-gap: 1rem;
+    }
+  }
+}

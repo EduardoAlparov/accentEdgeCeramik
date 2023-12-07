@@ -1,0 +1,385 @@
+@import '../helpers/mixins.scss';
+
+.main {
+  flex: 1 0 auto;
+}
+
+.wrapper {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+
+// site main container:
+[class*="__site-container"] {
+  margin: 0 auto;
+  max-width: 168rem;
+  width: 100%;
+  padding: 0 3rem;
+
+  @include breakpoint(large-desktop) {
+    max-width: 99%;
+    padding: 0 2rem;
+  }
+
+  @include breakpoint(tablet) {
+    max-width: 100%;
+    padding: 0 1.5rem;
+  }
+
+  @include breakpoint(small-mobile) {
+    padding: 0 10px;
+  }
+}
+
+// common section style:
+.section {
+  padding: 7.5rem 0;
+  overflow: hidden;
+
+
+  @include breakpoint(portrait-tablet) {
+    padding: 3.5rem 0;
+  }
+}
+
+.section.gallery,
+.section.shopping-cart {
+  overflow: unset;
+}
+
+.section.catalog {
+  padding: 2rem 0 7.5rem;
+  overflow: unset;
+
+  @include breakpoint(portrait-tablet) {
+    padding: 2rem 0 3.5rem;
+  }
+}
+
+.section.services {
+  padding: 2rem 0 7.5rem;
+
+  @include breakpoint(portrait-tablet) {
+    padding: 2rem 0 3.5rem;
+  }
+}
+
+.section.services.all-news {
+  padding: 2rem 0 0;
+}
+
+.section.catalog:last-child {
+  padding: 2rem 0 7.5rem;
+
+  @include breakpoint(portrait-tablet) {
+    padding: 2rem 0 3.5rem;
+  }
+}
+
+.section.card-layout {
+  padding: 2rem 0 0.5rem;
+}
+
+.section.card-layout.sample-section {
+  padding: 2rem 0 15rem;
+
+  @include breakpoint(portrait-tablet) {
+    padding: 2rem 0 7.5rem;
+  }
+}
+
+.section.card-layout:last-child {
+  padding: 2rem 0 7.5rem;
+
+  @include breakpoint(portrait-tablet) {
+    padding: 2rem 0 3.5rem;
+  }
+}
+
+.section:first-child {
+  padding: 8rem 0 7.5rem;
+
+  @include breakpoint(portrait-tablet) {
+    padding: 4rem 0 3.5rem;
+  }
+}
+
+.section:last-child {
+  padding: 7.5rem 0 8rem;
+
+  @include breakpoint(portrait-tablet) {
+    padding: 3.5rem 0 4rem;
+  }
+}
+
+.section.seo:last-child {
+  padding: 8rem 0;
+
+  @include breakpoint(portrait-tablet) {
+    padding: 4rem 0;
+  }
+}
+
+.section.catalog:last-child {
+  padding: 2rem 0 7.5rem;
+
+  @include breakpoint(portrait-tablet) {
+    padding: 2rem 0 3.5rem;
+  }
+}
+
+.section__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+
+  @include breakpoint(portrait-tablet) {
+    flex-wrap: wrap;
+  }
+}
+
+.section__header--mb-xl {
+  margin-bottom: 4.5rem;
+}
+
+.section__header--mb-s {
+  margin-bottom: 3rem;
+}
+
+.section__header--mb-xs {
+  margin-bottom: 2rem;
+}
+
+.section__header--mb-m {
+  margin-bottom: 3.5rem;
+}
+
+.section__header--mb-l {
+  margin-bottom: 4rem;
+}
+
+.section__header--mb-xl {
+  margin-bottom: 4.5rem;
+}
+
+.section__title {
+  color: var(--title);
+  font: var(--font-text-med-52);
+  font-family: var(--second-ff);
+  letter-spacing: -1.04px;
+
+  @include breakpoint(large-desktop) {
+    font: var(--font-text-med-32);
+  }
+
+  &--small {
+    font: var(--font-text-sb-24);
+  }
+
+  &--cart {
+    position: relative;
+  }
+}
+
+.section__title--h2 {
+  color: var(--title);
+  font: var(--font-text-sb-36);
+}
+
+.section__title--h3 {
+  font: var(--font-text-med-24);
+}
+
+.section__title--h4 {
+  font: var(--font-text-med-20);
+}
+
+.section__subtitle {
+  color: var(--title);
+  font: var(--font-text-med-36);
+}
+
+.section {
+
+  &__cart-counter {
+    position: absolute;
+    top: 0;
+    left: calc(100% + 0.8rem);
+    z-index: 1;
+
+    display: none;
+
+    color: var(--accent);
+    font: var(--font-text-sb-24);
+
+    &::before {
+      content: "(";
+    }
+
+    &::after {
+      content: ")";
+    }
+  }
+
+  &__title--cart {
+    position: relative;
+
+    .section__cart-counter {
+      display: inline-flex;
+    }
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 200;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0,0,0, 0.6);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity var(--transition-time), visibility var(--transition-time);
+}
+
+.modal.is-open {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity var(--transition-time), visibility var(--transition-time);
+}
+
+.modal__container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: none;
+  width: 100%;
+  max-width: 80%;
+  overflow: auto;
+  background-color: var(--white);
+  transform: translate(-50%, -50%);
+}
+
+.modal__container--callback {
+  max-width: 52.2rem;
+}
+
+.modal__container--map {
+  max-width: 122.1rem;
+}
+
+.modal__container--point {
+  max-width: 100%;
+  height: 100vh;
+  max-height: 90vh;
+
+  top: unset;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+
+.modal__container--point .modal__content {
+  height: 100%;
+}
+
+.modal__container.modal-open {
+  display: block;
+}
+
+.modal__close-btn {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  background-color: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.modal__container--point .modal__close-btn {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 3rem;
+  height: 3rem;
+
+  background-color: var(--grey);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.modal__container--point .modal__close-btn .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  stroke: var(--white);
+}
+
+.modal__close-btn .icon {
+  stroke: var(--grey-2);
+}
+
+.modal__content {
+  position: relative;
+  padding: 5rem;
+}
+
+
+.modal__container--map .modal__content {
+  padding: 0;
+}
+
+.modal--point {
+  display: none !important;
+}
+
+@media only screen and (max-width:1024px) {
+  .modal__content {
+    padding: 4rem 2rem;
+  }
+}
+
+@media only screen and (max-width:991px) {
+  .modal--point {
+    display: block !important;
+  }
+
+  .modal__container--point .modal__content {
+    padding: 2rem 2rem 0;
+  }
+
+  .modal__container--map .modal__content {
+    height: 100vh;
+  }
+}
+
+@media only screen and (max-width:768px) {
+  .modal__container--point .modal__content {
+    padding: 1rem 1rem 0;
+  }
+}

@@ -1,0 +1,277 @@
+@import '../helpers/mixins.scss';
+
+.ordering {
+  &__list {
+    margin-bottom: 5rem;
+  }
+
+  &__item {
+    margin-bottom: 1rem;
+    padding: 5rem 6rem;
+
+    background-color: var(--back);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include breakpoint(desktop) {
+      padding: 3rem;
+    }
+
+    @include breakpoint(portrait-tablet) {
+      padding: 2rem 1rem;
+    }
+  }
+
+  &__head {
+    &.office-link__option {
+      margin-bottom: 3.5rem;
+    }
+  }
+
+  &__inputs-row {
+    display: flex;
+    align-items: center;
+    column-gap: 1.5rem;
+    margin-bottom: 3.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include breakpoint(laptop) {
+      flex-flow: column nowrap;
+      align-items: stretch;
+    }
+  }
+
+
+  &__input-wrapper {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    &--small {
+      flex: 0 1 calc(100% / 6 - 1.25rem);
+
+      @include breakpoint(laptop) {
+        flex: 1 0 auto;
+        max-width:  15rem;
+      }
+    }
+
+    @include breakpoint(laptop) {
+      margin-bottom: 3rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__checkbox-wrapper {
+    flex: 0 1 33.2rem;
+
+    @include breakpoint(laptop) {
+      flex: 0 1 auto;
+      max-width:  33.2rem;
+      margin-bottom: 3rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: 1rem;
+
+    font: var(--font-text-med-14);
+  }
+}
+
+.order-checkbox {
+  &__label {
+    display: block;
+    width: 100%;
+
+    cursor: pointer;
+  }
+
+  &__button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 2.5rem;
+
+    min-height: 8rem;
+    padding: 1.7rem 2.5rem 1.8rem;
+
+    border: 1px solid #DDDAED;
+    pointer-events: none;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 3rem;
+    height: 2.5rem;
+
+    .icon {
+      fill: var(--grey);
+      stroke: var(--grey);
+      stroke-width: 0.2px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__title {
+    color: var(--title);
+    font: var(--font-text-med-16);
+  }
+
+  &__text {
+    color: var(--grey);
+    font: var(--font-text-med-14);
+  }
+
+  &__checkbox {
+    &:checked {
+      & + button {
+        border-color: var(--title);
+
+        .order-checkbox__icon {
+          .icon {
+            fill: var(--title);
+            stroke: var(--title);
+          }
+        }
+      }
+    }
+  }
+}
+
+.ordering {
+  &__comment {
+    margin-bottom: 5rem;
+  }
+
+  &__comment-label {
+    display: block;
+    margin-bottom: 2.5rem;
+  }
+
+
+  &__textarea {
+    width: 100%;
+    min-height: 20rem;
+    padding: 1.75rem 2rem;
+
+    color: var(--title);
+    font: var(--font-text-med-16);
+    resize: none;
+
+    border: 1px solid #DDDAED;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 3rem;
+
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+
+    border-style: solid;
+    border-color: #D8D2E8;
+    border-width: 0 0 1px 0;
+
+    .shopping-order__item {
+      column-gap: 0.8rem;
+    }
+
+    .shopping-order__key,
+    .shopping-order__value {
+      font: var(--font-text-sb-36);
+    }
+
+    @include breakpoint(laptop) {
+      flex-wrap: wrap;
+      gap: 3rem;
+    }
+  }
+
+  &__delivery-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 3rem;
+  }
+
+  &__delivery-info {
+    span {
+      color: var(--grey);
+      font: var(--font-text-med-16);
+    }
+  }
+
+  .ordering__counter-items-count,
+  .ordering__delivery-cost-value {
+    position: relative;
+
+    &::before {
+      content: "(";
+    }
+
+    &::after {
+      content: ")";
+    }
+  }
+
+  &__services-checkboxes {
+    display: flex;
+    align-items: center;
+    column-gap: 4rem;
+    margin-bottom: 2.5rem;
+
+    .filter-dropdown__checkbox-name {
+      font-size: 1.6rem;
+      font-weight: 500;
+    }
+
+    .filter-dropdown__checkbox-count-value {
+      color: var(--grey);
+      font-size: 1.6rem;
+    }
+
+    @include breakpoint(laptop) {
+      flex-wrap: wrap;
+      gap: 3rem;
+    }
+  }
+
+  &__submit {
+    display: flex;
+    align-items: center;
+    column-gap: 2.5rem;
+
+    @include breakpoint(laptop) {
+      flex-wrap: wrap;
+      gap: 3rem;
+    }
+  }
+
+  &__submit-button {
+    max-width: 33.4rem;
+  }
+}

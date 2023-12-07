@@ -1,0 +1,86 @@
+@import '../helpers/mixins.scss';
+
+.seo {
+  &__dropdown {
+    margin-bottom: 8rem;
+
+    &--closed {
+      .seo__text {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    @include breakpoint(tablet) {
+      margin-bottom: 4rem;
+    }
+  }
+
+  &__text {
+    margin-bottom: 2rem;
+
+    color: var(--title);
+    font: var(--font-text-med-16);
+    font-weight: 400;
+  }
+}
+
+.seo-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  width: 100%;
+  padding: 2rem 2rem 2rem 4rem;
+
+  background-color: var(--back);
+  transition: background-color 0.3s ease-out;
+
+  &__text {
+    flex: 0 1 auto;
+
+    color: var(--title);
+    font: var(--font-text-med-24);
+    text-align: left;
+
+    @include breakpoint(tablet) {
+      font: var(--font-text-med-16);
+    }
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    width: 6rem;
+    height: 6rem;
+    margin-left: 3rem;
+
+    .icon {
+      fill: var(--back-2);
+      transition: fill 0.3s ease-out;
+    }
+
+    @include breakpoint(tablet) {
+      width: 4rem;
+      height: 4rem;
+      margin-left: 2rem;
+    }
+  }
+
+  @include hover {
+    background-color: var(--back-2);
+
+    .seo-link__icon {
+  
+      .icon {
+        fill: var(--white);
+      }
+    }
+  }
+
+  @include breakpointMF(tablet) {
+    padding: 2rem;
+  }
+}

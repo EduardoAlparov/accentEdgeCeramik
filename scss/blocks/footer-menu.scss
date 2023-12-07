@@ -1,0 +1,81 @@
+@import '../helpers/mixins.scss';
+
+.footer-menu {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    margin-bottom: 1.5rem;
+
+    @include breakpoint(small-tablet) {
+      display: none;
+    }
+  } 
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint(small-tablet) {
+      flex-flow: row wrap;
+      justify-content: center;
+      column-gap: 2rem;
+      row-gap: 2rem;
+    }
+  }
+
+  &__item {
+    margin-bottom: 1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include breakpoint(small-tablet) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    display: flex;
+    width: max-content;
+
+    color: var(--white);
+    font: var(--font-text-med-16);
+
+    &::before {
+      position: absolute;
+      top: calc(100% + 0.2rem);
+      right: 0;
+      left: 0;
+      z-index: 1;
+
+      width: 0;
+      height: 1px;
+
+      background-color: var(--white);
+
+      transition: width 0.3s ease-out;
+      content: "";
+    }
+
+    &:hover {
+      &::before {
+        width: 100%;
+      }
+    }
+  }
+
+  @include breakpoint(small-tablet) {
+    display: none;
+  }
+
+  &--mobile {
+    @include breakpoint(small-tablet) {
+      display: flex;
+      flex-flow: row nowrap;
+    }
+  }
+}

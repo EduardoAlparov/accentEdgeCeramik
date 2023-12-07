@@ -1,0 +1,421 @@
+@import '../helpers/mixins.scss';
+
+.gallery {
+  &__wrapper {
+    position: relative;
+
+    width: 100%;
+    height: 0;
+    padding-top: 55%;
+
+    @include breakpoint(portrait-tablet) {
+      padding-top: 100%;
+    }
+  }
+
+  &__body {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+  }
+
+
+  &__main-swiper {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  &__swiper-wrapper {
+    height: 100%;
+  }
+
+  &__thumbs-swiper {
+    flex: 0 0 9%;
+
+    @include breakpoint(portrait-tablet) {
+      flex: 0 0 7rem;
+    }
+
+    &--smaller {
+      flex: 0 0 11.9%;
+    }
+  }
+}
+
+.item-gallery {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  img {
+    display: block;
+
+    max-width: unset;
+    min-width: 100%;
+    min-height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &--simple {
+    img {
+      @include centeredAbsolute();
+      z-index: 10;
+    }
+  }
+
+  &__point-pic {
+    .pic-point__button {
+      pointer-events: none;
+
+      @include breakpoint(portrait-tablet) {
+        pointer-events: all;
+      }
+    }
+
+    .popup-point__image {
+      flex: 1 0 20rem;
+    }
+  }
+}
+
+.thumbs {
+  width: 100%;
+  height: 100%;
+
+  &__swiper-slide {
+    &.swiper-slide {
+      width: max-content;
+    }
+
+    .thumbs__item {
+      &::before {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 10;
+
+        width: 100%;
+        height: 100%;
+
+        // opacity: 0.6000000238418579;
+        background-color: rgba($color: lightgray, $alpha: 0.5);
+
+        transition: 0.3s ease-out;
+        content: "";
+      }
+
+      &::after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 10;
+
+        width: 0%;
+        height: 3px;
+
+        background-color: var(--accent);
+
+        transition: width 0.3s ease-out;
+        content: "";
+      }
+    }
+
+    &.swiper-slide-thumb-active {
+      .thumbs__item {
+
+        &::before {
+          opacity: 0;
+          background-color: transparent;
+        }
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &__item {
+    position: relative;
+
+    display: block;
+
+    height: 100%;
+    aspect-ratio: 5.15 / 4;
+
+    overflow: hidden;
+
+    > img {
+      display: block;
+
+      max-width: unset;
+      min-width: 100%;
+      min-height: 100%;
+  
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+
+.pic-point {
+  position: absolute;
+  z-index: 50;
+
+  &__button {
+    display: block;
+
+    width: 3rem;
+    height: 3rem;
+    
+    background-color: var(--white);
+    border-radius: 100%;
+
+    border: 1rem solid var(--accent-dark);
+    transition: border 0.2s ease-out;
+  }
+  
+  &__label {
+    cursor: pointer;
+
+    @include hover {
+      .pic-point__button {
+        border-color: var(--grey);
+      }
+    }
+  }
+
+  &__popup {
+    position: absolute;
+    z-index: 10;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+
+    &--left {
+      right: calc(100% + 3.5rem);
+      left: unset;
+    }
+
+    &--top {
+      top: -3.5rem;
+      bottom: unset;
+    }
+
+    &--right {
+      left: calc(100% + 3.5rem);
+      right: unset;
+    }
+
+    &--bottom {
+      top: unset;
+      bottom: -3.5rem;
+    }
+
+    @include breakpoint(portrait-tablet) {
+      display: none;
+      height: 100%;
+    }
+
+    &--modal {
+      position: static;
+
+      display: block;
+
+      opacity: 1;
+      visibility: visible;
+
+      .popup-point__info {
+        flex:  1 0 auto;
+      }
+    }
+  }
+
+  
+  &__input {
+    &:checked {
+      + label {
+        .pic-point__button {
+          border-color: var(--grey);
+        }
+      }
+
+      ~ .pic-point__popup {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}
+
+.popup-point {
+  min-width: 35.2rem;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--white);
+  }
+
+  &__image {
+    position: relative;
+
+    overflow: hidden;
+    flex: 0 0 20rem;
+
+    img {
+      @include centeredAbsolute();
+      z-index: 10;
+
+      display: block;
+
+      max-width: unset;
+      min-width: 100%;
+      min-height: 100%;
+  
+      object-fit: cover;
+      object-position: center;
+    }
+
+    @include breakpoint(large-desktop) { 
+      flex: 0 0 40%;
+    }
+
+    @include breakpoint(portrait-tablet) {
+      flex: 0 0 50%;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 20;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 3.4rem;
+    height: 3.4rem;
+
+    background-color: rgba(250, 250, 250, 0.09);
+    border-radius: 100%;
+
+    transition: background-color 0.3s ease-out;
+
+    cursor: pointer;
+
+    .icon {
+      width: 1.7rem;
+      height: 1.7rem;
+      stroke: var(--white);
+    }
+
+    &:hover {
+      background-color: rgba(250, 250, 250, 0.25);
+    }
+
+    @include breakpoint(portrait-tablet) {
+      display: none;
+    }
+  }
+
+  &__info {
+    padding: 2.5rem;
+
+    color: var(--title);
+  }
+
+  &__name {
+    display: block;
+    margin-bottom: 1.5rem;
+
+    font: var(--font-text-med-24);
+  }
+
+  &__features {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 1.5rem;
+  }
+
+  &__feature {
+    display: inline-flex;
+  }
+
+  &__values,
+  &__key {
+    font: var(--font-text-med-14);
+  }
+
+  &__key {
+    color: var(--grey);
+  }
+
+  &__old-price {
+    display: none;
+    margin-right: 1rem;
+
+    color: var(--grey);
+    font: var(--font-text-med-14);
+    text-decoration: line-through;
+    text-decoration-line: strikethrough;
+  }
+
+  &__price {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 2.5rem;
+
+    font: var(--font-text-med-16);
+
+    &--with-old-price {
+      .popup-point__old-price {
+        display: inline-block;
+      }
+    }
+  }
+
+  &__in-stock {
+    margin-left: auto;
+
+    color: var(--grey);
+    font: var(--font-text-med-16);
+    font-weight: 400;
+
+    &--active {
+      color: var(--green);
+    }
+  }
+
+  &__input {
+    @include visuallyHidden();
+  }
+}

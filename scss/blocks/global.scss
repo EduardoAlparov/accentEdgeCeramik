@@ -1,0 +1,88 @@
+@import '../helpers/mixins.scss';
+
+html {
+  box-sizing: border-box;
+
+  -webkit-text-size-adjust: 100%;
+
+  font-size: 9px;
+
+
+  @include breakpointMF(tablet) {
+    font-size: 10px;
+  }
+
+  // @include breakpointMF(extra-large-desktop) {
+  //   font-size: 10px;
+  //   font-size: clamp(9px, 0.52vw, 25px);
+  //   font-size: clamp(9px, 0.6vw, 25px);
+  //   font-size: clamp(9px, 0.6vw, 25px);
+  // }
+
+  @include noHighlight();
+}
+
+._accent-color {
+  color: var(--accent);
+}
+
+._uppercase {
+  text-transform: uppercase;
+}
+
+._white-color {
+  color: var(--white);
+}
+
+.preload * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+}
+
+input::placeholder {
+  color: #666;
+  font-size: 80%;
+}
+
+::selection {
+  background-color: var(--grey-2);
+  color: #fff;
+}
+
+/* input validation behavior */
+/* input:focus:required:invalid,
+textarea:focus:required:invalid {
+    outline-color: var(--accent);
+} */
+
+/* input:required:valid,
+textarea:required:valid {
+    border-color: green;
+} */
+
+.menu-open,
+.disable-scroll {
+  overflow: hidden;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  white-space: nowrap;
+  border: 0;
+  -webkit-clip-path: inset(100%);
+          clip-path: inset(100%);
+}

@@ -1,0 +1,248 @@
+@import '../helpers/mixins.scss';
+
+.services {
+  &__list {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1.5rem;
+
+    @include breakpoint(desktop) {
+      justify-content: center;
+    }
+
+    @include breakpoint(portrait-tablet) {
+      flex-flow: column nowrap;
+      align-items: center;
+      justify-content: unset;
+    }
+  }
+
+  &__item {
+    width: calc(100% / 3 - 1rem);
+
+    @include breakpoint(desktop) {
+      width: calc(100% / 2 - 0.75rem);
+    }
+
+    @include breakpoint(portrait-tablet) {
+      width: 100%;
+    }
+  }
+}
+
+.service {
+  position: relative;
+
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  padding-top: 71.7%;
+
+  cursor: pointer;
+
+  &__body {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+
+    width: 100%;
+    height: 100;
+
+    > img {
+      @include centeredAbsolute();
+      z-index: 1;
+
+      display: block;
+      width: 100%;
+
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  &__button {
+    position: relative;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+
+    width: max-content;
+    padding: 1.3rem 2.5rem 1.4rem;
+
+    background-color: var(--accent-dark);
+    transition: background-color 0.3s ease-out;
+  }
+
+  &__icon {
+    display: block;
+
+    width: 3.3rem;
+    height: 3.3rem;
+
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__text {
+    color: var(--white);
+    font: var(--font-text-med-16);
+  }
+
+  @include hover {
+    .service__button {
+      background-color: #555562;
+    }
+  }
+
+  @include breakpoint(portrait-tablet) {
+    padding-top: 60%;
+  }
+}
+
+.services-item {
+  &__gallery {
+    &.card-layout__gallery {
+      flex: 0 0 93.9rem;
+
+      @include breakpoint(large-desktop) {
+        flex: 0 1 90rem;
+      }
+  
+      @include breakpoint(desktop) {
+        flex: 1 0 auto;
+      }
+    }
+  }
+  
+  &__control {
+    &.card-layout__control {
+      justify-content: start;
+      max-width: calc(100% - 101.9rem);
+
+      @include breakpoint(large-desktop) {
+        max-width: calc(100% - 90rem);
+      }
+  
+      @include breakpoint(desktop) {
+        flex: 1 0 auto;
+        max-width: 50%;
+      }
+  
+      @include breakpoint(portrait-tablet) {
+        max-width: 100%;
+      }
+    }
+  }
+
+  &__services-feedback {
+    margin-top: 8rem;
+  }
+}
+
+.services-feedback {
+  display: flex;
+  column-gap: 8rem;
+
+  padding: 6rem 12rem;
+
+  color: var(--white);
+  background-color: var(--accent-dark);
+
+  &__info {
+    @include breakpoint(laptop) {
+      margin-bottom: 3rem;
+    }
+  }
+
+  &__title {
+    padding-bottom: 5rem;
+
+    font: var(--font-text-sb-36);
+
+    border-style: solid;
+    border-color: #49495E;
+    border-width: 0 0 1px 0;
+
+    &-grey {
+      color: var(--grey);
+    }
+
+    @include breakpoint(desktop) {
+      font: var(--font-text-med-32);
+      font-weight: 600;
+    }
+
+    @include breakpoint(laptop) {
+      padding-bottom: 3rem;
+    }
+
+    @include breakpoint(small-tablet) {
+      font: var(--font-text-sb-24);
+    }
+  }
+
+  &__phone {
+    margin-top: 4rem;
+
+    @include breakpoint(laptop) {
+      margin-top: 3rem;
+    }
+  }
+
+  &__text {
+    color: var(--grey);
+    font: var(--font-text-med-20);
+    line-height: 150%;
+  }
+
+  &__link {
+    &.phone-link--big {
+      font-size: 2rem;
+    }
+  }
+
+  &__form {
+    flex: 1 0 auto;
+    max-width: 48.1rem;
+      
+    @include breakpoint(desktop) {
+      max-width: 40rem;
+    }
+
+    @include breakpoint(laptop) {
+      max-width: 100%;
+    }
+  }
+
+  @include breakpoint(large-desktop) {
+    padding: 6rem;
+  }
+
+  @include breakpoint(desktop) {
+    column-gap: 3rem;
+  }
+
+  @include breakpoint(laptop) {
+    flex-direction: column;
+    align-items: stretch;
+    column-gap: unset;
+  }
+
+  @include breakpoint(small-tablet) {
+    padding: 2rem;
+  }
+
+  @include breakpoint(small-mobile) {
+    padding: 2rem 1rem;
+  }
+}

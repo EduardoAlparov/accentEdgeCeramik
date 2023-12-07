@@ -1,0 +1,19 @@
+<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 4618">
+<g id="Ellipse 92" filter="url(#filter0_b_224_3224)">
+<circle cx="17" cy="17" r="17" fill="#FAFAFA" fill-opacity="0.09"/>
+</g>
+<g id="Group 4617">
+<path id="Vector 66" d="M24 10L10 24" stroke="white" stroke-width="1.5"/>
+<path id="Vector 67" d="M24 24L10 10" stroke="white" stroke-width="1.5"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_b_224_3224" x="-4" y="-4" width="42" height="42" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImageFix" stdDeviation="2"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_224_3224"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_224_3224" result="shape"/>
+</filter>
+</defs>
+</svg>

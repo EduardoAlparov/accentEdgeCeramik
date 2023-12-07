@@ -1,0 +1,151 @@
+@import '../helpers/mixins.scss';
+
+.phone-link {
+  color: var(--title);
+  font: var(--font-text-sb-18);
+  transition: var(--transition);
+  
+  @include hover {
+    color: var(--accent);
+  }
+
+  &--big {
+    font: var(--font-text-med-24);
+  }
+
+  &--light {
+    color: var(--white);
+  }
+
+  &--small {
+    color: var(--title);
+    font: var(--font-text-sb-18);
+  }
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 3rem;
+  height: 3rem;
+
+  background-color: var(--grey-dark);
+  border-radius: 100%;
+
+  .icon {
+    width: 1.6rem;
+    height: 1.6rem;
+
+    fill: var(--white);
+  }
+}
+
+.policy-link {
+  color: inherit;
+  font: var(--font-text-med-14);
+  text-decoration-line: underline;
+
+  &:hover {
+    color: var(--white);
+  }
+}
+
+.dev-link {
+  display: flex;
+  align-items: center;
+  column-gap: 1.5rem;
+
+  &__text {
+    flex-shrink: 0;
+
+    color: inherit;
+    font: var(--font-text-med-14);
+
+    transition: color 0.2s ease-out;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+
+    width: 10.9rem;
+    height: 3rem;
+
+    will-change: transform;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    .dev-link__icon {
+      transform: scale(1.1);
+    }
+
+    .dev-link__text {
+      color: var(--white);
+    }
+  }
+}
+
+.jump-link {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+
+  color: var(--grey);
+
+  transition: color 0.3s ease-out;
+
+  &__text {
+    color: inherit;
+    font: var(--font-text-sb-16);
+    white-space: nowrap;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .icon {
+      width: 0.6rem;
+      height: 1.2rem;
+
+      stroke: var(--accent);
+    }
+  }
+
+  &:hover {
+    color: var(--title);
+  }
+
+  &--clear {
+    .jump-link__icon {
+      .icon {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+  }
+}
+
+.product-link {
+  color: var(--grey);
+  font: var(--font-text-med-14);
+  text-decoration-line: underline;
+  text-underline-offset: 3px;
+
+  &:hover {
+    color: var(--title);
+  }
+}
+
+.mobile-control {
+  display: block;
+  
+  .icon {
+    width: 22px;
+    height: 22px;
+  }
+}

@@ -1,0 +1,66 @@
+@import '../helpers/mixins.scss';
+
+.breadcrumbs {
+  overflow: hidden;
+  padding: 2.5rem 0;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    overflow: auto;
+
+    @include noScrollbar();
+
+    @include breakpoint(portrait-tablet) {
+      margin-right: -100%;
+      padding-right: 100%;
+    }
+  }
+
+  &__item {
+    &:first-child {
+      .breadcrumbs__link {
+        padding-left: 0;
+      }
+    }
+
+    &:last-child {
+      .breadcrumbs__link {
+        padding-right: 0;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: block;
+    padding: 0 1rem;
+
+    color: var(--grey);
+    font: var(--font-text-req-12);
+    white-space: nowrap;
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      right: 0;
+
+      width: 0.4rem;
+      height: 0.4rem;
+
+      background-color: var(--grey);
+
+      transform: translate(50%, -50%);
+      content: '';
+    }
+
+    &--active {
+      color: var(--title);
+      pointer-events: none;
+
+      &::after {
+        content: none;
+      }
+    }
+  }
+}

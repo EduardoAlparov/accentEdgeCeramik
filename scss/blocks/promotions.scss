@@ -1,0 +1,350 @@
+@import '../helpers/mixins.scss';
+
+.promotions {
+  &__body {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    column-gap: 12rem;
+
+    @include breakpoint(desktop) {
+      column-gap: unset;
+      flex-direction: column;
+    }
+  }
+
+  &__header {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include breakpoint(desktop) {
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      column-gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    @include breakpoint(small-tablet) {
+      flex-flow: column nowrap;
+      justify-content: unset;
+      column-gap: unset;
+      margin-bottom: 3rem;
+    }
+    
+    &--start {
+      justify-content: flex-start;
+    }
+  }
+
+  &__title {
+    margin-bottom: 2.5rem;
+
+    @include breakpoint(desktop) {
+      margin-bottom: 0;
+
+      br {
+        display: none;
+      }
+    }
+
+    @include breakpoint(small-tablet) {
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  &__swiper {
+    flex-grow: 1;
+    max-width: 121.1rem;
+
+    &.swiper {
+      margin-right: unset;
+      margin-left: unset;
+    }
+
+    @include breakpoint(desktop) {
+      flex: 0 0 auto;
+      width: 100%;
+      // height: 25rem;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    column-gap: 6rem;
+    margin-top: auto;
+
+    @include breakpoint(desktop) {
+      column-gap: 3rem;
+    }
+
+    @include breakpoint(small-tablet) {
+      justify-content: space-between;
+      flex-direction: row;
+    }
+
+    &--start {
+      margin-top: 1rem;
+      
+      @include breakpoint(desktop) {
+        margin-top: 0;
+      }
+    }
+  }
+
+  &__tab {
+    display: block;
+    padding: 1rem 1.5rem;
+    color: var(--title);
+    font: var(--font-text-med-16);
+    background-color: var(--back);
+  }
+
+  &__date {
+    color: var(--grey);
+    font: var(--font-text-med-16);
+    font-weight: 400;
+  }
+
+  &__news-image {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    margin-bottom: 3.5rem;
+    padding-bottom: 52.34%;
+
+    &--services {
+      padding-bottom: 57.6%;
+    }
+
+    img {
+      @include centeredAbsolute();
+      z-index: 10;
+
+      max-width: unset;
+      min-height: 100%;
+      min-width: 100%;
+
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  &__news-text {
+    p {
+      margin-bottom: 2rem;
+      color: var(--title);
+      font: var(--font-text-med-16);
+      font-weight: 400;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.link-promotion {
+  position: relative;
+
+  width: 100%;
+  padding-top: 63.45%;
+  height: 0;
+
+  &__body {
+    @include centeredAbsolute();
+
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+
+    img {
+      @include centeredAbsolute();
+
+      max-width: unset;
+      min-height: 100%;
+      
+      object-fit: cover;
+      object-position: center;
+
+      will-change: transform;
+      transition: transform 0.3s ease-out;
+    }
+  }
+
+  &__mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+
+    background-color: var(--title);
+    opacity: 0.35;
+
+  }
+
+  &__title {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 20;
+
+    width: max-content;
+    max-width: 100%;
+    padding: 1.5rem 1.5rem 2rem 2.4rem;
+
+    color: var(--white);
+    font: var(--font-text-sb-24);
+
+    background: rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(5px);
+
+    @include breakpoint(laptop) {
+      font: var(--font-text-sb-16);
+      padding: 1.5rem 0.7rem 1.5rem 2rem;
+    }
+  }
+
+  @include hover {
+    .link-promotion__body {
+      img {
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+    }
+  }
+
+  &--small {
+    .link-promotion__title {
+      font: var(--font-text-sb-16);
+      padding: 1.5rem 0.7rem 1.5rem 2rem;
+    }
+  }
+
+  &__size {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 5;
+
+    color: var(--white);
+    font: var(--font-text-req-12);
+    font-weight: 600;
+  }
+}
+
+.link-solution {
+  position: relative;
+
+  overflow: hidden;
+  width: 100%;
+  padding-top: 63.45%;
+
+  background-color: var(--back);
+
+  &__body {
+    @include centeredAbsolute();
+
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+
+    max-width: 60%;
+    padding: 2.5rem;
+
+    @include breakpoint(laptop) {
+      max-width: 70%;
+      padding: 2rem;
+    }
+  }
+
+  &__title {
+    margin-bottom: 1rem;
+
+    color: var(--title);
+    font: var(--font-text-sb-24);
+
+    @include breakpoint(laptop) {
+      font: var(--font-text-sb-16);
+    }
+  }
+
+  &__subtitle {
+    color: var(--grey);
+    font: var(--font-text-med-14);
+
+    @include breakpoint(laptop) {
+      font: var(--font-text-req-12);
+    }
+  }
+
+  &__image-wrapper {
+    position: absolute;
+    top: 50%;
+    right: -20%;
+    z-index: 1;
+
+    transform: translateY(-50%);
+    height: 100%;
+    aspect-ratio: 1 / 1;
+
+    img {
+      display: block;
+
+      width: 100%;
+
+      object-fit: contain;
+      object-position: center;
+    }
+  }
+
+  &--small {
+    .link-solution__info {
+      max-width: 70%;
+      padding: 2rem;
+    }
+
+    .link-solution__title {
+      font: var(--font-text-sb-16);
+    }
+
+    .link-solution__subtitle {
+      font: var(--font-text-req-12);
+    }
+
+    .link-solution__image-wrapper {
+      height: 90%;
+    }
+  }
+}
+
+.partner {
+  position: relative;
+
+  overflow: hidden;
+  width: 100%;
+  padding-top: 63.45%;
+
+  background-color: var(--back);
+
+  img {
+    @include centeredAbsolute();
+
+    max-width: 75%;
+    
+    object-fit: contain;
+    object-position: center;
+  }
+}

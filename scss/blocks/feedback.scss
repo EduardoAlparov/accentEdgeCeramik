@@ -1,0 +1,101 @@
+@import '../helpers/mixins.scss';
+
+.feedback {
+  overflow: hidden;
+
+  &__outer-wrapper {
+    background-color: var(--back);
+  }
+
+  &__body {
+    display: flex;
+    gap: 6.2rem;
+
+    @include breakpoint(large-desktop) {
+      gap: 3rem;
+    } 
+  }
+
+  &__form {
+    flex: 0 1 auto;
+    padding: 15rem 0;
+
+    @include breakpoint(desktop) {
+      padding: 5rem 0;
+    } 
+  }
+
+  &__title {
+    margin-bottom: 2.5rem;
+  }
+
+  &__subtitle {
+    margin-bottom: 3rem;
+
+    color: var(--grey);
+    font: var(--font-text-med-16);
+  }
+
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    padding: 3rem 0 0;
+  }
+
+  &__row {
+    display: flex;
+    align-items: stretch;
+    column-gap: 1.5rem;
+
+    > * {
+      flex: 1 0 50%;
+
+      @include breakpoint(desktop) {
+        flex: 1 0 auto;
+      } 
+    }
+
+    @include breakpoint(desktop) {
+      flex-flow: column nowrap;
+      gap: 1.5rem;
+    } 
+  }
+
+  &__pic {
+    position: relative;
+
+    flex: 0 0 40%;
+
+    > img {
+      @include centeredAbsolute();
+
+      max-width: unset;
+      height: 85%;
+
+      object-fit: contain;
+      object-position: center;
+
+      @include breakpoint(large-desktop) {
+        height: 65%;
+      } 
+
+      @include breakpoint(desktop) {
+        // height: 50%;
+      } 
+    }
+
+    @include breakpoint(large-desktop) {
+      flex: 0 0 45%;
+    } 
+
+    @include breakpoint(desktop) {
+      flex: 0 0 50%;
+    } 
+
+    @include breakpoint(tablet) {
+      display: none;
+    } 
+  }
+}

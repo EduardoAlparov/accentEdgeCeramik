@@ -1,0 +1,137 @@
+@import '../helpers/mixins.scss';
+
+.footer {
+  flex: 0 0 auto;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: var(--accent-dark);
+}
+
+.footer__row {
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+
+  @include breakpoint(laptop) {
+    flex-flow: row wrap;
+    justify-content: space-between;
+    gap: 5rem;
+  }
+
+  @include breakpoint(small-tablet) {
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 3rem;
+  }
+}
+
+.footer__row--center {
+  align-items: center;
+}
+
+.footer__main {
+  padding: 8rem 0;
+
+  @include breakpoint(laptop) {
+    padding: 5rem 0;
+  }
+}
+
+.footer__col-logo {
+  @include breakpoint(laptop) {
+    order: 1;
+    flex: 0 0 calc(50% - 2.5rem);
+  }
+
+  @include breakpoint(small-tablet) {
+    order: 2;
+    flex: 1 0 100%;
+  }
+}
+
+.footer__socials,
+.footer__logo {
+  margin-bottom: 4rem;
+
+  @include breakpoint(small-tablet) {
+    margin: 0 auto;
+    margin-bottom: 3rem;
+  }
+}
+
+.footer__contacts {
+  margin-bottom: 3.5rem;
+
+  > .call-button {
+    max-width: 30rem;
+  }
+
+  > .phone-link {
+    margin-bottom: 2rem;
+    
+    @include breakpoint(small-tablet) {
+      font-size: 3.2rem;
+    }
+  }
+
+  @include breakpoint(small-tablet) {
+    margin-bottom: 0;
+  }
+}
+
+.footer__menus {
+  flex-shrink: 0;
+  display: flex;
+  gap: 5rem 10rem;
+
+  @include breakpoint(laptop) {
+    order: 3;
+    flex: 1 0 auto;
+    justify-content: space-between;
+    gap: 5rem;
+  }
+}
+
+.footer__col-contacts {
+  @include breakpoint(laptop) {
+    order: 2;
+    flex: 0 0 max-content;
+    margin: 0 auto;
+  }
+
+  @include breakpoint(small-tablet) {
+    order: 1;
+    flex: 1 0 100%;
+  }
+}
+
+.footer__email {
+  padding-bottom: 4rem;
+
+  @include breakpoint(small-tablet) {
+    display: none;
+  }
+}
+
+.footer__email-title {
+  margin-bottom: 0.5rem;
+}
+
+.footer__up-button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  @include breakpoint(small-tablet) {
+    right: unset; 
+    left: 50%;
+    bottom: -4rem;
+    transform: translateX(-50%);
+  }
+}
+
+.footer__bottom {
+  padding: 2.5rem 0;
+
+  background-color: var(--title);
+}

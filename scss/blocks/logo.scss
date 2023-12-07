@@ -1,0 +1,46 @@
+@import '../helpers/mixins.scss';
+
+.logo {
+  display: flex;
+  flex-direction: column;
+
+  width: max-content;
+  
+  cursor: pointer;
+
+  &__title {
+    margin-bottom: 0.5rem;
+
+    color: var(--title);
+    font: var(--font-text-logo-title);
+    white-space: nowrap;
+
+    @include breakpoint(tablet) {
+      margin-bottom: 3px;
+    }
+  }
+
+  &__text {
+    color: var(--text-light);
+    font: var(--font-text-req-11);
+    white-space: nowrap;
+    opacity: 0.5;
+
+    
+    @include breakpoint(tablet) {
+      font: var(--font-text-req-11);
+      font-size: 8px;
+    }
+  }
+
+  &--light {
+    .logo__title {
+      color: var(--white);
+    }
+
+    .logo__text {
+      color: rgba(255, 255, 255, 0.5);
+      opacity: 1;
+    }
+  }
+}

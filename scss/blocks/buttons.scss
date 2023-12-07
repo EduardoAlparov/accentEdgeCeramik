@@ -1,0 +1,382 @@
+@import '../helpers/mixins.scss';
+
+.call-button {
+  display: block;
+  padding: 0.7rem 1.2rem;
+  
+  color: var(--accent);
+  font: var(--font-text-med-14);
+  text-align: center;
+
+  background-color: rgba(231, 41, 34, 0.10);
+
+  transition: var(--transition);
+
+  @include hover {
+    color: var(--white);
+    background-color: rgba(231, 41, 34, 1);
+  }
+
+  &--dark {
+    color: var(--white);
+    font: var(--font-text-med-14);
+  
+    background-color: rgba(255, 255, 255, 0.10);
+
+    @include hover {
+      color: var(--white);
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  &--black {
+    color: var(--white);
+    font: var(--font-text-med-14);
+  
+    background-color: var(--accent-dark);
+  }
+
+  &--white {
+    color: var(--accent-dark);
+  
+    background-color: var(--white);
+  }
+
+  &--big {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    font-weight: 600;
+  }
+
+  &--accent {
+    color: var(--white);
+
+    background-color: var(--accent);
+  }
+}
+
+.panel-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.8rem;
+
+  padding: 2rem 5rem;
+
+  text-align: center;
+  background-color: var(--accent-dark);
+  transition: background-color 0.3s ease-out;
+
+  &__text {
+    color: var(--white);
+    font: var(--font-text-sb-14);
+    text-align: center;
+    white-space: nowrap;
+
+    &--big {
+      font: var(--font-text-sb-16);
+    }
+  }
+
+  &__icon {
+    width: 1.1rem;
+    height: 1.2rem;
+
+    fill: var(--white);
+
+    &--opened {
+      display: none;
+      width: 1.3rem;
+      height: 1.4rem;
+    }
+  }
+
+  @include hover {
+    background-color: rgba(43, 43, 59, 0.9);
+  }
+
+  &--active {
+    background-color: var(--accent);
+
+    @include hover {
+      background-color: rgba(231, 41, 34, 0.9);
+    }
+
+    .panel-button__icon {
+      display: none;
+  
+      &--opened {
+        display: block;
+      }
+    }
+  }
+
+  &--light {
+    background-color: var(--white);
+
+    .panel-button__text {
+      color: var(--title);
+    }
+
+    @include hover {
+      background-color: rgba(255, 255, 255, 0.90);
+    }
+  }
+
+  &--big-text {
+    .panel-button__text {
+      font: var(--font-text-sb-16);
+    }
+  } 
+
+  &--bordered {
+    background-color: var(--white);
+    border: 1px solid var(--title);
+
+    .panel-button__text {
+      color: var(--title);
+    }
+
+    @include hover {
+      background-color: rgba(43, 43, 59, 0.9);
+      
+      .panel-button__text {
+        color: var(--white);
+      }
+    }
+  }
+}
+
+.up-button {
+  display: flex;
+  align-items: stretch;
+  column-gap: 0.6rem;
+
+  &__text {
+    color: rgba(255, 255, 255, 0.5);
+    font: var(--font-text-med-14);
+
+    transition: color var(--transition);
+  }
+
+  &__icon { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: transform var(--transition);
+
+    .icon {
+      width: 1rem;
+      height: 0.7rem;
+    }
+  }
+
+  &:hover {
+    .up-button__text {
+      color: rgba(255, 255, 255, 1);
+    }
+
+    .up-button__icon {
+      transform: translateY(-30%) scale(1.1);
+    }
+  }
+}
+
+.slider-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 4rem;
+  height: 4rem;
+
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 100%;
+  backdrop-filter: blur(2px);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  &:disabled {
+    pointer-events: none;
+  }
+
+  .icon {
+    width: 0.8rem;
+    height: 1.2rem;
+    stroke: var(--white);
+  }
+
+  &--prev {
+    .icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  &--dark {
+    background: var(--back);
+
+    .icon {
+      stroke: var(--title);
+    }
+
+    &:hover {
+      background: var(--border);
+    }
+  }
+
+  &.cards-swiper-button-next,
+  &.cards-swiper-button-prev {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+.seo-button {
+  display: flex;
+  align-items: stretch;
+  column-gap: 0.8rem;
+
+  &__text {
+    color: var(--grey);
+    font: var(--font-text-sb-16); 
+
+    transition: color 0.3s ease-out;
+
+    &--closed {
+
+    }
+
+    &--opened {
+      display: none;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+
+    .icon {
+      width: 1rem;
+      height: 0.6rem;
+    }
+  }
+
+  @include hover() {
+    .seo-button__text {
+      color: var(--title);
+    }
+  }
+
+  &._active {
+    .seo-button__text--closed {
+      display: none;
+    }
+
+    .seo-button__text--opened {
+      display: block;
+    }
+
+    .seo-button__icon {
+      .icon {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+.burger-button {
+  position: relative;
+
+  width: 2.4rem;
+  height: 2.4rem;
+
+  &__icon {
+    @include centeredAbsolute();
+
+    width: 100%;
+    height: 100%;
+
+    &--hamburger {
+      opacity: 1;
+    }
+
+    &--cross {
+      opacity: 0;
+    }
+  }
+
+  &--active {
+    .burger-button__icon--hamburger {
+      opacity: 0;
+    }
+
+    .burger-button__icon--cross {
+      opacity: 1;
+    }
+  }
+}
+
+.pag-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 4rem;
+  max-height: 4rem;
+  padding: 1.2rem;
+
+  color: var(--title);
+  font: var(--font-text-sb-14);
+  line-height: 107%;
+  text-align: center;
+
+  background-color: transparent;
+  border: 1px solid var(--border);
+
+  transition: background-color 0.3s ease-out;
+
+  @include hover {
+    background-color: var(--border);
+  }
+
+  &--active {
+    color: var(--white);
+    background-color: var(--accent-dark);
+    border-color: var(--accent-dark);
+    pointer-events: none;
+
+    // @include hover {
+    //   color: var(--title);
+    //   background-color: var(--back);
+    //   border-color: var(--border);
+    // }
+  }
+}
+
+.switcher-tab {
+  display: block;
+
+  width: max-content;
+  padding: 1rem 2rem;
+
+  color: var(--title);
+  font: var(--font-text-med-14);
+
+  background-color: #F3F1FA;
+  border-radius: 50px;
+
+  transition: color 0.3s ease-out;
+
+  &--active {
+    color: var(--white);
+    background-color: var(--title);
+  }
+
+  @include hover() {
+    color: var(--grey);
+  }
+}
